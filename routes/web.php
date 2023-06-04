@@ -17,6 +17,16 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [App\Http\Controllers\ListsController::class, 'index'])->name('home');
+
+Route::post('/add-list', [App\Http\Controllers\ListsController::class, 'create']);
+
+Route::get('/lists', [App\Http\Controllers\ListsController::class, 'index']);
+
+Route::put('/lists/{id}', [App\Http\Controllers\ListsController::class, 'update']);
+
+Route::delete('/lists/{id}', [App\Http\Controllers\ListsController::class, 'delete']);
+
